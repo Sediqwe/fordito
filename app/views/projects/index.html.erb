@@ -16,19 +16,39 @@
 
   <tbody>
     <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.name %></td>
-        <td><%= project.www %></td>
-        <td><%= project.email %></td>
-        <td><%= project.version %></td>
-        <td><%= project.details %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div><div class="ui card">
+      <div class="content">
+        <div class="header"><%= project.name %></div>
+      </div>
+      <div class="content">
+        <h4 class="ui sub header">Activity</h4>
+        <div class="ui small feed">
+          <div class="event">
+            <div class="content">
+              <div class="summary">
+              <%= project.www %>
+              <%= project.email %>
+              <%= project.version %>
+              <%= project.details %>
+              <%= link_to 'Show', project %>
+              <%= link_to 'Edit', edit_project_path(project) %>
+              
+            </div>
+          </div>
+         
+          </div>
+        </div>
+      </div>
+      <div class="extra content">
+        <button class="ui button">Join Project</button>
+      </div>
+    </div>
+    </div>
+
+
     <% end %>
   </tbody>
-</table>
+
 
 <br>
 
