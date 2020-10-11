@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_11_153935) do
+ActiveRecord::Schema.define(version: 2020_10_11_171042) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2020_10_11_153935) do
     t.string "username"
     t.string "password_digest"
     t.string "email"
-    t.binary "admin"
+    t.boolean "admin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
