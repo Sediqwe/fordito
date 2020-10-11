@@ -1,37 +1,45 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Projects</h1>
+<h1>Futó fordításaink:</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Www</th>
-      <th>Email</th>
-      <th>Version</th>
-      <th>Details</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
     <% @projects.each do |project| %>
       <div><div class="ui card">
       <div class="content">
         <div class="header"><%= project.name %></div>
       </div>
       <div class="content">
-        <h4 class="ui sub header">Activity</h4>
+        
         <div class="ui small feed">
           <div class="event">
             <div class="content">
               <div class="summary">
-              <%= project.www %>
-              <%= project.email %>
-              <%= project.version %>
-              <%= project.details %>
-              <%= link_to 'Show', project %>
-              <%= link_to 'Edit', edit_project_path(project) %>
+              <h4 class="ui horizontal divider header">
+  <i class="bar chart icon"></i>
+        Adatok:
+        </h4>
+          <table class="ui definition table">
+            <tbody>
+              <tr>
+                <td class="two wide column">WWW</td>
+                <td> <%= project.www %></td>
+              </tr>
+              <tr>
+                <td>E-Mail</td>
+                <td><%= project.email %></td>
+              </tr>
+              <tr>
+                <td>Verzió</td>
+                <td><%= project.version %></td>
+              </tr>
+              <tr>
+                <td>Leírás:</td>
+                <td><%= project.details %></td>
+              </tr>
+            </tbody>
+</table>
+             
+              <%= link_to 'Megnéz', project, class: "ui positive button" %>&nbsp;<%= link_to 'Módosít', edit_project_path(project),  class: "ui negative button"  %><br>
               
             </div>
           </div>
@@ -40,16 +48,16 @@
         </div>
       </div>
       <div class="extra content">
-        <button class="ui button">Join Project</button>
+        <button class="ui button">Csatlakozom a fordításhoz</button>
       </div>
     </div>
     </div>
 
-
+<br>
     <% end %>
-  </tbody>
+  
 
 
 <br>
 
-<%= link_to 'New Project', new_project_path %>
+<%= link_to 'Új project hozzáadása', new_project_path, class: "ui blue button" %>
