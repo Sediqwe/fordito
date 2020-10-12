@@ -10,6 +10,10 @@
       </ul>
     </div>
   <% end %>
+  <div class="field">
+    <%= form.label "File" %>
+    <%= form.file_field :files, multiple: true %>
+  </div>
 
   <div class="field">
     <%= form.label :file_name %>
