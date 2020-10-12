@@ -69,6 +69,6 @@ class UploadsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def upload_params
-      params.require(:upload).permit(:filename, :filext, :filesize, :fileversion, :gamename, :file )
+      params.require(:upload).permit(:file_name, :file_ext, :file_size, :game_version, :project_id)
     end
 end

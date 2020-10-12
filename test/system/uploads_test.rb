@@ -14,11 +14,11 @@ class UploadsTest < ApplicationSystemTestCase
     visit uploads_url
     click_on "New Upload"
 
-    fill_in "Filename", with: @upload.filename
-    fill_in "Filesize", with: @upload.filesize
-    fill_in "Fileversion", with: @upload.fileversion
-    fill_in "Filext", with: @upload.filext
-    fill_in "Gamename", with: @upload.gamename
+    fill_in "File ext", with: @upload.file_ext
+    fill_in "File name", with: @upload.file_name
+    fill_in "File size", with: @upload.file_size
+    fill_in "Game version", with: @upload.game_version
+    fill_in "Project", with: @upload.project_id
     click_on "Create Upload"
 
     assert_text "Upload was successfully created"
@@ -29,11 +29,11 @@ class UploadsTest < ApplicationSystemTestCase
     visit uploads_url
     click_on "Edit", match: :first
 
-    fill_in "Filename", with: @upload.filename
-    fill_in "Filesize", with: @upload.filesize
-    fill_in "Fileversion", with: @upload.fileversion
-    fill_in "Filext", with: @upload.filext
-    fill_in "Gamename", with: @upload.gamename
+    fill_in "File ext", with: @upload.file_ext
+    fill_in "File name", with: @upload.file_name
+    fill_in "File size", with: @upload.file_size
+    fill_in "Game version", with: @upload.game_version
+    fill_in "Project", with: @upload.project_id
     click_on "Update Upload"
 
     assert_text "Upload was successfully updated"

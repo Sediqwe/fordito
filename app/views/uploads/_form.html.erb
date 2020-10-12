@@ -12,37 +12,29 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :filename %>
-    <%= form.text_field :filename %>
+    <%= form.label :file_name %>
+    <%= form.text_field :file_name %>
   </div>
 
   <div class="field">
-    <%= form.label :filext %>
-    <%= form.text_field :filext %>
+    <%= form.label :file_ext %>
+    <%= form.text_field :file_ext %>
   </div>
 
   <div class="field">
-    <%= form.label :filesize %>
-    <%= form.text_field :filesize %>
+    <%= form.label :file_size %>
+    <%= form.text_field :file_size %>
   </div>
 
   <div class="field">
-    <%= form.label :fileversion %>
-    <%= form.text_field :fileversion %>
+    <%= form.label :game_version %>
+    <%= form.text_field :game_version %>
   </div>
 
   <div class="field">
-    <%= form.label :gamename %>
-    <%= form.text_field :gamename %>
+    <%= form.label :project_id %>
+    <%= form.number_field :project_id %>
   </div>
-
-  <div class="field">
-    <%= form.label :file %>
-    <%= form.file_field :file %>
-  </div>
-
-      
-
 
   <div class="actions">
     <%= form.submit %>

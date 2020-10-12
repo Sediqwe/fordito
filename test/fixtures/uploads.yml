@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  filename: MyString
-  filext: MyString
-  filesize: MyString
-  fileversion: MyString
-  gamename: MyString
+  file_name: MyString
+  file_ext: MyString
+  file_size: MyString
+  game_version: MyString
+  project_id: 1
 
 two:
-  filename: MyString
-  filext: MyString
-  filesize: MyString
-  fileversion: MyString
-  gamename: MyString
+  file_name: MyString
+  file_ext: MyString
+  file_size: MyString
+  game_version: MyString
+  project_id: 1
