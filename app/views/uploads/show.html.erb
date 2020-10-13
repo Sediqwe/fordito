@@ -1,5 +1,15 @@
 <p id="notice"><%= notice %></p>
+<% @upload.files.each do |file| %>
 
+  <table>
+    <tr>
+      <td><%= file.name %></td>
+      <td><%= l file.created_at, format: :short %></td>
+      <td><%= file.id %></td>
+    </tr>
+  </table>
+
+<% end %>
 <p>
   <strong>File name:</strong>
   <%= @upload.file_name %>

@@ -29,10 +29,10 @@ class UploadsController < ApplicationController
     respond_to do |format|
       if @upload.save
         format.html { redirect_to @upload, notice: 'Upload was successfully created.' }
-        format.json { render :show, status: :created, location: @upload }
+        
       else
         format.html { render :new }
-        format.json { render json: @upload.errors, status: :unprocessable_entity }
+        
       end
     end
   end
@@ -43,10 +43,8 @@ class UploadsController < ApplicationController
     respond_to do |format|
       if @upload.update(upload_params)
         format.html { redirect_to @upload, notice: 'Upload was successfully updated.' }
-        format.json { render :show, status: :ok, location: @upload }
       else
         format.html { render :edit }
-        format.json { render json: @upload.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,7 +55,6 @@ class UploadsController < ApplicationController
     @upload.destroy
     respond_to do |format|
       format.html { redirect_to uploads_url, notice: 'Upload was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -69,6 +66,6 @@ class UploadsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def upload_params
-      params.require(:upload).permit(:file_name, :file_ext, :file_size, :game_version, :project_id)
+      params.require(:upload).permit(:file_name, :file_ext, :file_size, :game_version, :project_id, files:[])
     end
 end
