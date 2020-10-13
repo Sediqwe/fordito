@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_11_171042) do
+ActiveRecord::Schema.define(version: 2020_10_12_170739) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,16 +33,6 @@ ActiveRecord::Schema.define(version: 2020_10_11_171042) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "prjcts", force: :cascade do |t|
-    t.string "name"
-    t.string "www"
-    t.string "email"
-    t.string "version"
-    t.text "details"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.string "www"
@@ -54,11 +44,11 @@ ActiveRecord::Schema.define(version: 2020_10_11_171042) do
   end
 
   create_table "uploads", force: :cascade do |t|
-    t.string "filename"
-    t.string "filext"
-    t.string "filesize"
-    t.string "fileversion"
-    t.string "gamename"
+    t.string "file_name"
+    t.string "file_ext"
+    t.string "file_size"
+    t.string "game_version"
+    t.integer "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
