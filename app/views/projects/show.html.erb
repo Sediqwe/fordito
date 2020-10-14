@@ -1,29 +1,47 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Fordítás::</strong>
   <%= @project.name %>
 </p>
 
 <p>
-  <strong>Www:</strong>
+  <strong>Webcím:</strong>
   <%= @project.www %>
 </p>
 
 <p>
-  <strong>Email:</strong>
+  <strong>E-mail:</strong>
   <%= @project.email %>
 </p>
 
 <p>
-  <strong>Version:</strong>
+  <strong>Verzió:</strong>
   <%= @project.version %>
 </p>
 
 <p>
-  <strong>Details:</strong>
+  <strong>Részletek:</strong>
   <%= @project.details %>
 </p>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<p>
+  <strong>Fájlok:</strong>
+  <% if @upload %>
+  <% @upload.files.each do |file| %>
+
+    <table>
+      <tr>
+        <td><%= file.name %></td>
+        <td><%= l file.created_at, format: :short %></td>
+        <td><%= file.id %></td>
+      </tr>
+    </table>
+  
+  <% end %>
+  <% else %>
+  Jelenleg még nincs feltöltve semmi!
+  <% end %>
+</p>
+<%= link_to 'Módosítás', edit_project_path(@project), class: "ui blue button" %>
+<%= link_to 'Vissza', projects_path, class: "ui blue button" %>

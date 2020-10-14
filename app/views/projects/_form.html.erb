@@ -11,32 +11,36 @@
     </div>
   <% end %>
 
-  <div class="ui input">
-    <%= form.label "Név:" %>
-    <%= form.text_field :name %>
-  </div>
 
-  <div class="field">
-    <%= form.label "Webcím:" %>
-    <%= form.text_field :www %>
-  </div>
+  <table class="ui definition table">
+  <tbody>
+    <tr>
+      <td class="two wide column">Név:</td>
+      <td><%= form.text_field :name %></td>
+    </tr>
+    <tr>
+      <td>Webcím:</td>
+      <td><%= form.text_field :www %></td>
+    </tr>
+    <tr>
+      <td>E-mail:</td>
+      <td><%= form.text_field :email %></td>
+    </tr>
+    <tr>
+      <td>Verzió:</td>
+      <td><%= form.text_field :version %></td>
+    </tr>
+    <tr>
+    <td>Részletek:</td>
+    <td> <%= form.text_area :details %></td>
+    </tr>
+    <tr>
+    <tr>
+    <td>   <%= form.submit class: "ui blue button " %></td>
+    </tr>
+  </tbody>
+</table>
 
-  <div class="field">
-    <%= form.label "E-mail:" %>
-    <%= form.text_field :email %>
-  </div>
 
-  <div class="field">
-    <%= form.label "Verzió:" %>
-    <%= form.text_field :version %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Leírás:" %>
-    <%= form.text_area :details %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  
 <% end %>

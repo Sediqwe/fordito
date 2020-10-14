@@ -4,7 +4,8 @@
 
 
 
-  
+<%= link_to 'Új felhasználó', new_user_path , class: "ui blue button" %>
+<br><br>
   <div class="ui link four cards">
     <% @users.each do |user| %>
       
@@ -19,28 +20,19 @@
           </div>
           <div class="description">
           <%= user.email %>
-          
-          <%= content_tag( :button, content_tag(:i, '', :class=> 'address book icon'), :class=>'circular ui icon button') if user.admin? %>
+          Admin:
+          <%= content_tag( :button, content_tag(:i, '', :class=> 'thumbs up icon'), :class=>'circular ui icon button') if user.admin? %>
           </div>
         </div>
         <div class="extra content">
           <span class="right floated">
-          <%= user.admin %>
-          <%= link_to 'Edit', edit_user_path(user) %>
-          <%= link_to 'Show', user %>
-        <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Módosít', edit_user_path(user), class: "ui blue button" %>
+          <%= link_to 'Megnéz', user, class: "ui blue button" %>
+        <%= link_to 'Törlés', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "ui red button" %>
           </span>
-          <span>
-            <i class="user icon"></i>
-            75 Friends
-          </span>
+          
         </div>
       </div>
 
     <% end %>
     </div>
-
-
-<br>
-
-<%= link_to 'New User', new_user_path %>
