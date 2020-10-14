@@ -4,7 +4,7 @@
 
 
 
-  <tbody>
+  
   <div class="ui link four cards">
     <% @users.each do |user| %>
       
@@ -20,7 +20,7 @@
           <div class="description">
           <%= user.email %>
           
-          <%= content_tag( :i, '', :class=>'exclamation icon') if user.admin? %>
+          <%= content_tag( :button, content_tag(:i, '', :class=> 'address book icon'), :class=>'circular ui icon button') if user.admin? %>
           </div>
         </div>
         <div class="extra content">

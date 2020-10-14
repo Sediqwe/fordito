@@ -2,62 +2,61 @@
 
 <h1>Futó fordításaink:</h1>
 
-
-    <% @projects.each do |project| %>
-      <div><div class="ui card">
-      <div class="content">
-        <div class="header"><%= project.name %></div>
-      </div>
-      <div class="content">
-        
-        <div class="ui small feed">
-          <div class="event">
-            <div class="content">
-              <div class="summary">
-              <h4 class="ui horizontal divider header">
-  <i class="bar chart icon"></i>
-        Adatok:
-        </h4>
-          <table class="ui definition table">
-            <tbody>
-              <tr>
-                <td class="two wide column">WWW</td>
-                <td> <%= project.www %></td>
-              </tr>
-              <tr>
-                <td>E-Mail</td>
-                <td><%= project.email %></td>
-              </tr>
-              <tr>
-                <td>Verzió</td>
-                <td><%= project.version %></td>
-              </tr>
-              <tr>
-                <td>Leírás:</td>
-                <td><%= project.details %></td>
-              </tr>
-            </tbody>
-</table>
-             
-              <%= link_to 'Megnéz', project, class: "ui positive button" %>&nbsp;<%= link_to 'Módosít', edit_project_path(project),  class: "ui negative button"  %><br>
-              
-            </div>
-          </div>
-         
-          </div>
-        </div>
-      </div>
-      <div class="extra content">
-        <button class="ui inverted secondary button">Csatlakozom a fordításhoz &nbsp;<i class="thumbs up outline icon"></i></button>
-      </div>
-    </div>
-    </div>
-
-<br>
-    <% end %>
+<%= link_to 'Új project hozzáadása', new_project_path, class: "ui blue button" %>
+<div class="ui five column grid">
   
 
 
+
+
+    <% @projects.each do |project| %>
+
+      <div class="column">
+      <div class="ui fluid card">
+        <div class="content">
+          <div class="header"><%= project.name %></div>
+              </div>
+              <div class="content">
+                <div class="ui small feed">
+                  <div class="event">
+                    <div class="content">
+                      <div class="summary">
+                        <h4 class="ui horizontal divider header"><i class="bar chart icon"></i>Adatok:
+                        </h4>
+                        <table class="ui definition table">
+                          <tbody>
+                            <tr>
+                              <td class="two wide column">WWW</td>
+                              <td> <%= project.www %></td>
+                            </tr>
+                            <tr>
+                              <td>E-Mail</td>
+                              <td><%= project.email %></td>
+                            </tr>
+                            <tr>
+                              <td>Verzió</td>
+                              <td><%= project.version %></td>
+                            </tr>
+                            <tr>
+                              <td>Leírás:</td>
+                              <td><%= project.details %></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <%= link_to 'Megnéz', project, class: "ui positive button" %>&nbsp;<%= link_to 'Módosít', edit_project_path(project),  class: "ui negative button"  %><br>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <div class="extra content">
+            <button class="ui inverted secondary button">Csatlakozom a fordításhoz &nbsp;<i class="thumbs up outline icon"></i></button>
+          </div>
+      </div>
+      </div>
+    <% end %>
+  </div>
+
 <br>
 
-<%= link_to 'Új project hozzáadása', new_project_path, class: "ui blue button" %>
+
