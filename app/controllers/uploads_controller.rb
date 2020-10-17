@@ -33,16 +33,16 @@ class UploadsController < ApplicationController
         zip_file.each do |entry|
           @translation_file = TranslationFile.new(uploads_id: @upload.id, file_name: entry.name, file_type: 'text/plain')
           @translation_file.save
+          translation_content = []
 
           file_content = entry.get_input_stream.read
           enum_content = file_content.each_line
           enum_content.each do |content_line|
             key, value = content_line.split('=')
             next if key == "\r\n"
-
-            @translation_file_content = TranslationFileContent.new(translation_files_id: @translation_file.id, key: key, value: value)
-            @translation_file_content.save
+            translation_content << {translation_files_id: @translation_file.id, key: key, value: value}
           end
+          @translation_file_content = TranslationFileContent.insert_all(translation_content)
         end
       end
     end
