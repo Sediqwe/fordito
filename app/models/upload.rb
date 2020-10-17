@@ -1,4 +1,6 @@
 class Upload < ApplicationRecord
-    has_many_attached :files
-    belongs_to :project
+  has_many :translation_files
+
+  has_one_attached :file
+  belongs_to :project
 end

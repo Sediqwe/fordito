@@ -32,6 +32,9 @@ gem 'semantic-ui-sass'
 gem 'jquery-rails'
 gem 'therubyracer'
 
+gem 'rubyzip', '>= 1.0.0' # will load new rubyzip version
+gem 'zip-zip' # will load compatibility for old rubyzip API.
+
 group :production do 
   gem 'pg'
 end
@@ -44,7 +47,8 @@ group :development, :test do
 end
 
 group :development do
-  
+  gem 'pry-byebug'
+  gem 'pry-rails'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
