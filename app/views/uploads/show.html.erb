@@ -1,21 +1,28 @@
 <p id="notice"><%= notice %></p>
 Fájlok:
 
-
-<%# TODO @upload.files.each do |file| %>
-<!--  <div class="ui segment">-->
-
-<!--  <table>-->
-<!--    <tr>-->
-<!--      <td><h3>File Name: </h3><%#= file.name %></td>-->
-<!--    </tr><tr>-->
-<!--      <td><h3>Create Date: </h3><%#= l file.created_at, format: :short %></td>-->
-<!--      </tr><tr>-->
-<!--      <td><h3>File ID: </h3><%#= file.id %></td>-->
-<!--    </tr>-->
-<!--  </table>-->
-<!--  </div>-->
-<%# end %>
+<table>
+  <thead>
+    <tr>
+      <th>File Name:</th>
+      <th>File Type:</th>
+      <th>Create Date:</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @translation_files.each do |file| %>
+    <tr>
+      <td><%= file.file_name %></td>
+      <td><%= file.file_type %></td>
+      <td><%= l file.created_at, format: :short %></td>
+      <td><%= link_to 'Edit', edit_translation_path(file) %></td>
+    </tr>
+  <% end %>
+</table>
+<br>
+<hr>
+<br>
 <p>
   <strong>File name:</strong>
   <%= @upload.file_name %>
