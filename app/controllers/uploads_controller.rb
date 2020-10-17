@@ -25,17 +25,29 @@ class UploadsController < ApplicationController
   # POST /uploads
   # POST /uploads.json
   def create
-    @upload = Upload.new(upload_params)
 
-    respond_to do |format|
-      if @upload.save
-        format.html { redirect_to @upload, notice: 'Upload was successfully created.' }
-        
-      else
-        format.html { render :new }
-        
+    @upload = Upload.new(upload_params)
+    @upload.save
+    if upload_params[:file].content_type == 'application/zip'
+      Zip::File.open(upload_params[:file].tempfile) do |zip_file|
+        zip_file.each do |entry|
+          @translation_file = TranslationFile.new(uploads_id: @upload.id, file_name: entry.name, file_type: 'text/plain')
+          @translation_file.save
+
+          file_content = entry.get_input_stream.read
+          enum_content = file_content.each_line
+          enum_content.each do |content_line|
+            key, value = content_line.split('=')
+            next if key == "\r\n"
+
+            @translation_file_content = TranslationFileContent.new(translation_files_id: @translation_file.id, key: key, value: value)
+            @translation_file_content.save
+          end
+        end
       end
     end
+
+    redirect_to @upload, notice: 'Upload was successfully created.'
   end
 
   # PATCH/PUT /uploads/1
@@ -67,6 +79,7 @@ class UploadsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def upload_params
-      params.require(:upload).permit(:file_name, :file_ext, :file_size, :game_version, :project_id, :translation, files: [])
+      params.require(:upload).permit(:file_name, :file_ext, :file_size, :game_version, :project_id, :translation, :file)
     end
+
 end

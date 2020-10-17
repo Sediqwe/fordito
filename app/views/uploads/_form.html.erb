@@ -12,7 +12,7 @@
   <% end %>
   <div class="field">
     <%= form.label "File" %>
-    <%= form.file_field :files, multiple: true %>
+    <%= form.file_field :file %>
   </div>
   <div class="field">
     <%= form.label :file_name %>
@@ -37,7 +37,7 @@
 
   <div class="field">
     <%= form.label :project_id %>
-    <%= form.number_field :project_id %>
+    <%= form.select :project_id, options_for_select(Project.all.map{|s|[s.name, s.id]}) %>
   </div>
   <div class="field">
     <%= form.label :translation %>
