@@ -6,8 +6,8 @@
       <th>File Name:</th>
       <th>File Type:</th>
       <th>Create Date:</th>
-      <th></th>
-      <th></th>
+      <th>Line Num.</th>
+      <th>Action</th>
     </tr>
   </thead>
   <% @translation_files.each do |file| %>
@@ -15,6 +15,7 @@
       <td><%= file.file_name %></td>
       <td><%= file.file_type %></td>
       <td><%= l file.created_at, format: :short %></td>
+      <td><%= file.translation_file_contents.size %></td>
       <td><%= link_to 'Edit', edit_translation_path(file) %></td>
     </tr>
   <% end %>

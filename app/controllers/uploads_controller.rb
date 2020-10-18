@@ -6,6 +6,7 @@ class UploadsController < ApplicationController
   def index
     @uploads = Upload.all
     @projects = Project.all
+    
   end
 
   # GET /uploads/1
