@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_17_141450) do
+ActiveRecord::Schema.define(version: 2020_10_17_165726) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 2020_10_17_141450) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "prjcts", force: :cascade do |t|
+    t.string "name"
+    t.string "www"
+    t.string "email"
+    t.string "version"
+    t.text "details"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.string "www"
@@ -41,6 +51,24 @@ ActiveRecord::Schema.define(version: 2020_10_17_141450) do
     t.text "details"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "translation_file_contents", force: :cascade do |t|
+    t.integer "translation_files_id", null: false
+    t.string "key"
+    t.text "value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["translation_files_id"], name: "index_translation_file_contents_on_translation_files_id"
+  end
+
+  create_table "translation_files", force: :cascade do |t|
+    t.integer "uploads_id", null: false
+    t.string "file_name"
+    t.string "file_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["uploads_id"], name: "index_translation_files_on_uploads_id"
   end
 
   create_table "translations", force: :cascade do |t|
@@ -74,4 +102,6 @@ ActiveRecord::Schema.define(version: 2020_10_17_141450) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "translation_file_contents", "translation_files", column: "translation_files_id"
+  add_foreign_key "translation_files", "uploads", column: "uploads_id"
 end

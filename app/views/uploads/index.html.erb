@@ -17,6 +17,7 @@
   <tbody>
     <% @uploads.each do |upload| %>
       <tr>
+      <td><%= upload.id %></td>
         <td><%= upload.file_name %></td>
         <td><%= upload.file_ext %></td>
         <td><%= upload.file_size %></td>

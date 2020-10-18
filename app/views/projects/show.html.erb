@@ -24,24 +24,5 @@
   <strong>Részletek:</strong>
   <%= @project.details %>
 </p>
-
-<p>
-  <strong>Fájlok:</strong>
-  <% if @upload %>
-  <% @upload.files.each do |file| %>
-
-    <table>
-      <tr>
-        <td><%= file.name %></td>
-        <td><%= l file.created_at, format: :short %></td>
-        <td><%= file.id %></td>
-      </tr>
-    </table>
-  
-  <% end %>
-  <% else %>
-  Jelenleg még nincs feltöltve semmi!
-  <% end %>
-</p>
 <%= link_to 'Módosítás', edit_project_path(@project), class: "ui blue button" %>
 <%= link_to 'Vissza', projects_path, class: "ui blue button" %>
