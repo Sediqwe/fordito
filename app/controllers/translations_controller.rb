@@ -1,8 +1,11 @@
 class TranslationsController < ApplicationController
 
   def index; end
+
   def edit
     @translation = TranslationFile.find(params[:id])
-    @contents = @translation.translation_file_contents.paginate(page: params[:page])
+
+    @q = TranslationFileContent.ransack(params[:q])
+    @contents = @q.result.where(translation_file_id: params[:id]).order(:id).page(params[:page])
   end
 end
