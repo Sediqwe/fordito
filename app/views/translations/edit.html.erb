@@ -1,4 +1,4 @@
-<div class=''>
+<div class='container-fluid '>
 <%= will_paginate @contents %>
 
 <h1><%= @translation.file_name %></h1>
@@ -31,7 +31,7 @@
       <td><%= i+=1 %></td>
       <td><%= cnt.id %></td>
       <td><%= cnt.key.to_s.strip %></td>
-      <td><textarea style="resize: none;"><%= cnt.value.to_s.strip %></textarea></div></td>
+      <td><textarea readonly class='form-control' style="resize: none;"><%= cnt.value.to_s.strip %></textarea></div></td>
       <td><button class='ui red button'>Nem fordít</button>   <button class="ui  green button">Engedélyez</button> </td>
       
     </tr>
@@ -39,3 +39,4 @@
   </tbody>
 </table>
 <%= paginate @contents %>
+</div>
