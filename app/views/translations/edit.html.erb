@@ -14,7 +14,7 @@
   <%= f.search_field :key_or_value_cont %>
 <% end %>
 <% i = 0 %>
-<table class='ui striped inverted blue table'>
+<table class='ui striped inverted table'>
   <thead>
     <tr>
       <th>Nr.</th>
@@ -30,8 +30,8 @@
     <tr>
       <td><%= i+=1 %></td>
       <td><%= cnt.id %></td>
-      <td><%= cnt.key %></td>
-      <td><%= cnt.value %></td>
+      <td><%= cnt.key.to_s.strip %></td>
+      <td><textarea style="resize: none;"><%= cnt.value.to_s.strip %></textarea></div></td>
       <td><button class='ui red button'>Nem fordít</button>   <button class="ui  green button">Engedélyez</button> </td>
       
     </tr>
