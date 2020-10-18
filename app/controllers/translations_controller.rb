@@ -1,8 +1,11 @@
 class TranslationsController < ApplicationController
 
-  def index; end
+  def index
+  
+  end
 
   def edit
+    @num = params[:page]
     @translation = TranslationFile.find(params[:id])
 
     @q = TranslationFileContent.ransack(params[:q])

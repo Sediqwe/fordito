@@ -1,26 +1,39 @@
+<div class=''>
 <%= will_paginate @contents %>
 
 <h1><%= @translation.file_name %></h1>
-<h3> Sorok száma: <%=  @contents.size %>/<%= @translation.translation_file_contents.size %></h3>
+
+<% if @num %>
+<h3> Sorok száma: <%=  @contents.size * ((@num.to_i)-1) %> - <%= @contents.size * @num.to_i %>(Total:<%= @translation.translation_file_contents.size %>)</h3>
+<% else %>
+  <h3> Sorok száma: 0 - <%=  @contents.size %> (Total:<%= @translation.translation_file_contents.size %>)</h3>
+<% end %>
+
 
 <%= search_form_for @q, url: edit_translation_path() do |f| %>
   <%= f.search_field :key_or_value_cont %>
 <% end %>
-
-<table>
+<% i = 0 %>
+<table class='ui striped inverted blue table'>
   <thead>
     <tr>
+      <th>Nr.</th>
+      <th>ID.</th>
       <th>Key</th>
       <th>Value</th>
-      <th></th>
+      <th>Command</th>
+      
     </tr>
   </thead>
   <tbody>
     <% @contents.each do |cnt| %>
     <tr>
+      <td><%= i+=1 %></td>
+      <td><%= cnt.id %></td>
       <td><%= cnt.key %></td>
       <td><%= cnt.value %></td>
-      <td></td>
+      <td><button class='ui red button'>Nem fordít</button>   <button class="ui  green button">Engedélyez</button> </td>
+      
     </tr>
     <% end %>
   </tbody>
