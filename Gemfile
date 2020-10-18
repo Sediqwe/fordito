@@ -28,9 +28,11 @@ gem 'mini_magick'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'less-rails'
-gem 'semantic-ui-sass'
 gem 'jquery-rails'
+gem 'kaminari'
+gem 'less-rails'
+gem 'ransack'
+gem 'semantic-ui-sass'
 gem 'therubyracer'
 
 gem 'rubyzip', '>= 1.0.0' # will load new rubyzip version
