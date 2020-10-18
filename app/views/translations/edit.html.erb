@@ -1,4 +1,4 @@
-<div class='container-fluid '>
+
 <%= will_paginate @contents %>
 
 <h1><%= @translation.file_name %></h1>
@@ -14,7 +14,7 @@
   <%= f.search_field :key_or_value_cont %>
 <% end %>
 <% i = 0 %>
-<table class='ui striped inverted table'>
+<table class='ui striped table'>
   <thead>
     <tr>
       <th>Nr.</th>
@@ -39,4 +39,3 @@
   </tbody>
 </table>
 <%= paginate @contents %>
-</div>

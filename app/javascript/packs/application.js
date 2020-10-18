@@ -22,4 +22,12 @@ import './bootstrap_custom.js'
 require("semantic-ui-sass")
 $(document).on('turbolinks:load', function(){
     $('.ui.dropdown').dropdown();
+    
+    $("#teszt").on("click", function(event){
+        alert("Jquery teszt 1.0");
+    });
+
+
 })
+
+  
