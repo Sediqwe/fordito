@@ -1,5 +1,30 @@
 <p id="notice"><%= notice %></p>
 
+<<<<<<< HEAD
+=======
+<table>
+  <thead>
+    <tr>
+      <th>File Name:</th>
+      <th>File Type:</th>
+      <th>Create Date:</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @translation_files.each do |file| %>
+    <tr>
+      <td><%= file.file_name %></td>
+      <td><%= file.file_type %></td>
+      <td><%= l file.created_at, format: :short %></td>
+      <td><%= link_to 'Edit', edit_translation_path(file) %></td>
+    </tr>
+  <% end %>
+</table>
+<br>
+<hr>
+<br>
+>>>>>>> ba6a66e031c213e2e0a6c6a5906f78d99ab3a041
 <p>
   <strong>File name:</strong>
   <%= @upload.file_name %>
