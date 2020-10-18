@@ -54,37 +54,21 @@ ActiveRecord::Schema.define(version: 2020_10_17_165726) do
   end
 
   create_table "translation_file_contents", force: :cascade do |t|
-<<<<<<< HEAD
-    t.integer "translation_files_id", null: false
-=======
     t.integer "translation_file_id", null: false
->>>>>>> ba6a66e031c213e2e0a6c6a5906f78d99ab3a041
     t.string "key"
     t.text "value"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-<<<<<<< HEAD
-    t.index ["translation_files_id"], name: "index_translation_file_contents_on_translation_files_id"
-  end
-
-  create_table "translation_files", force: :cascade do |t|
-    t.integer "uploads_id", null: false
-=======
     t.index ["translation_file_id"], name: "index_translation_file_contents_on_translation_file_id"
   end
 
   create_table "translation_files", force: :cascade do |t|
     t.integer "upload_id", null: false
->>>>>>> ba6a66e031c213e2e0a6c6a5906f78d99ab3a041
     t.string "file_name"
     t.string "file_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-<<<<<<< HEAD
-    t.index ["uploads_id"], name: "index_translation_files_on_uploads_id"
-=======
     t.index ["upload_id"], name: "index_translation_files_on_upload_id"
->>>>>>> ba6a66e031c213e2e0a6c6a5906f78d99ab3a041
   end
 
   create_table "translations", force: :cascade do |t|
@@ -118,11 +102,6 @@ ActiveRecord::Schema.define(version: 2020_10_17_165726) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-<<<<<<< HEAD
-  add_foreign_key "translation_file_contents", "translation_files", column: "translation_files_id"
-  add_foreign_key "translation_files", "uploads", column: "uploads_id"
-=======
   add_foreign_key "translation_file_contents", "translation_files"
   add_foreign_key "translation_files", "uploads"
->>>>>>> ba6a66e031c213e2e0a6c6a5906f78d99ab3a041
 end
