@@ -24,5 +24,10 @@
   <strong>Részletek:</strong>
   <%= @project.details %>
 </p>
+
+<p>
+  <strong>Feltöltött fájlok:</strong>
+  <%= link_to "#{@project.uploads.size} feltöltött fájl", "/uploads?id=#{@project.id}" %>
+</p>
 <%= link_to 'Módosítás', edit_project_path(@project), class: "ui blue button" %>
 <%= link_to 'Vissza', projects_path, class: "ui blue button" %>

@@ -4,8 +4,16 @@ class UploadsController < ApplicationController
   # GET /uploads
   # GET /uploads.json
   def index
-    @uploads = Upload.all
+    
+    @page=params[:id]
+    if @page
+      @uploads = Upload.where(project_id: @page)
+    else
+      @uploads = Upload.all
+    end
+
     @projects = Project.all
+    
     
   end
 
