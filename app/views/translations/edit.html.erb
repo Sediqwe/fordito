@@ -29,7 +29,15 @@
       <td><%= cnt.id %></td>
       <td><%= cnt.key.to_s.strip %></td>
       <td><textarea readonly class='form-control' style="resize: none;"><%= cnt.value.to_s.strip %></textarea></div></td>
-      <td><button class='ui red button'>Nem fordít</button>   <button class="ui  green button">Engedélyez</button> </td>
+      <td><textarea id="forditas" name="<%= cnt.id %>" class='form-control' style="resize: none;"></textarea></div></td>
+      <%= simple_form_for @translation_file_content do |f| %>
+        <%= f.input :new_value %>
+        <%= f.input :user_id %>
+        <%= f.button :submit %>
+      <% end %>
+
+
+      <td><button id="send" name="<%= cnt.id %>" class='ui green button'><i class="check icon"></i>Send</button> <button class='ui red button'>Nem fordít</button></td>
       
     </tr>
     <% end %>
