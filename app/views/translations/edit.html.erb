@@ -1,14 +1,11 @@
-
-<%= will_paginate @contents %>
+<div class="flickr_pagination">
+    <div class="page_info">
+      <%= page_entries_info  @contents %>
+    </div>
+    <%= will_paginate  @contents, :container => false %>
+  </div>
 
 <h1><%= @translation.file_name %></h1>
-
-<% if @num %>
-<h3> Sorok száma: <%=  @contents.size * ((@num.to_i)-1) %> - <%= @contents.size * @num.to_i %>(Total:<%= @translation.translation_file_contents.size %>)</h3>
-<% else %>
-  <h3> Sorok száma: 0 - <%=  @contents.size %> (Total:<%= @translation.translation_file_contents.size %>)</h3>
-<% end %>
-
 
 <%= search_form_for @q, url: edit_translation_path() do |f| %>
   <%= f.search_field :key_or_value_cont %>

@@ -20,7 +20,7 @@ class UploadsController < ApplicationController
   # GET /uploads/1
   # GET /uploads/1.json
   def show
-    @translation_files = @upload.translation_files
+    @translation_files = @upload.translation_files.paginate(page: params[:page], per_page: 30)
   end
 
   # GET /uploads/new

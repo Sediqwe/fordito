@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
-<h2>Feltöltött fájlok : <%= @translation_files.size %></h2>
+<div class="flickr_pagination">
+    <div class="page_info">
+      <%= page_entries_info  @translation_files %>
+    </div>
+    <%= will_paginate  @translation_files, :container => false %>
+  </div>
 <table class='ui striped table '>
   <thead>
     <tr>
