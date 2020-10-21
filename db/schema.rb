@@ -33,16 +33,6 @@ ActiveRecord::Schema.define(version: 2020_10_20_184534) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "prjcts", force: :cascade do |t|
-    t.string "name"
-    t.string "www"
-    t.string "email"
-    t.string "version"
-    t.text "details"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.string "www"
@@ -54,14 +44,14 @@ ActiveRecord::Schema.define(version: 2020_10_20_184534) do
   end
 
   create_table "trans", force: :cascade do |t|
-    t.integer "translation_file_contents_id"
-    t.string "key"
-    t.text "value"
-    t.text "new_value"
+    t.integer "translation_file_content_id", null: false
     t.integer "user_id"
-    t.integer "status"
+    t.text "value"
+    t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["translation_file_content_id"], name: "index_trans_on_translation_file_content_id"
+    t.index ["user_id"], name: "index_trans_on_user_id"
   end
 
   create_table "translation_file_contents", force: :cascade do |t|
@@ -116,6 +106,8 @@ ActiveRecord::Schema.define(version: 2020_10_20_184534) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "trans", "translation_file_contents"
+  add_foreign_key "trans", "users"
   add_foreign_key "translation_file_contents", "translation_files"
   add_foreign_key "translation_files", "uploads"
 end

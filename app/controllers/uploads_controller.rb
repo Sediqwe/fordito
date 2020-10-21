@@ -4,13 +4,8 @@ class UploadsController < ApplicationController
   # GET /uploads
   # GET /uploads.json
   def index
-    
-    @page=params[:id]
-    if @page
-      @uploads = Upload.where(project_id: @page)
-    else
-      @uploads = Upload.all
-    end
+    @uploads = Upload.where(project_id: @page) if params[:id].present?
+    @uploads = Upload.all
 
     @projects = Project.all
     
@@ -82,14 +77,14 @@ class UploadsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_upload
-      @upload = Upload.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_upload
+    @upload = Upload.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def upload_params
-      params.require(:upload).permit(:file_name, :file_ext, :file_size, :game_version, :project_id, :translation, :file)
-    end
+  # Only allow a list of trusted parameters through.
+  def upload_params
+    params.require(:upload).permit(:file_name, :file_ext, :file_size, :game_version, :project_id, :translation, :file)
+  end
 
 end
