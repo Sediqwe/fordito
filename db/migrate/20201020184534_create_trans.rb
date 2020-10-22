@@ -1,12 +1,11 @@
 class CreateTrans < ActiveRecord::Migration[6.0]
   def change
     create_table :trans do |t|
-      t.integer :translation_file_contents_id
-      t.string :key
+      t.references :translation_file_content, null: false, foreign_key: true
+      t.references :user, null: true, foreign_key: true
       t.text :value
-      t.text :new_value
-      t.integer :user_id
-      t.integer :status
+      t.integer :status, default: 0
+
       t.timestamps
     end
   end
