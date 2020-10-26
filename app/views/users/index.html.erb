@@ -16,9 +16,10 @@
         <div class="content">
           <div class="header"><%= user.username %></div>
           <div class="meta">
-            
+          
           </div>
           <div class="description">
+          
           <%= user.email %>
           Admin:
           <%= content_tag( :button, content_tag(:i, '', :class=> 'thumbs up icon'), :class=>'circular ui icon button') if user.admin? %>
