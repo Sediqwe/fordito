@@ -11,8 +11,10 @@
 
   <body>
     <div class='container-fluid '>
-      <%= render '/menu' %>
+      <%= render 'shared/menu' %>
+      <%= render 'shared/error' %>
       <%= yield %>
     </div>
   </body>
 </html>
+
