@@ -24,14 +24,15 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.create(user_params)
+    @user = User.new(user_params)
 
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
-        else
+        format.json { render :show, status: :created, location: @user }
+      else
         format.html { render :new }
-        
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,8 +43,10 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,7 +57,7 @@ class UsersController < ApplicationController
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      
+      format.json { head :no_content }
     end
   end
 
@@ -66,6 +69,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:username,:password, :password_digest, :email, :admin, :avatar)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation)
     end
 end
