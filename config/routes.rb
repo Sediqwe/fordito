@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :users
+  devise_for :users
   resources :uploads
+  resources :users
   resources :projects
   resources :translations
   resources :trans
