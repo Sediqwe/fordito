@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2020_10_26_204207) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -44,8 +47,8 @@ ActiveRecord::Schema.define(version: 2020_10_26_204207) do
   end
 
   create_table "trans", force: :cascade do |t|
-    t.integer "translation_file_content_id", null: false
-    t.integer "user_id"
+    t.bigint "translation_file_content_id", null: false
+    t.bigint "user_id"
     t.text "value"
     t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
@@ -55,18 +58,18 @@ ActiveRecord::Schema.define(version: 2020_10_26_204207) do
   end
 
   create_table "translation_file_contents", force: :cascade do |t|
-    t.integer "translation_file_id", null: false
+    t.bigint "translation_file_id", null: false
     t.string "key"
     t.text "value"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", precision: 6, default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", precision: 6, default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["key"], name: "index_translation_file_contents_on_key"
     t.index ["translation_file_id"], name: "index_translation_file_contents_on_translation_file_id"
     t.index ["value"], name: "index_translation_file_contents_on_value"
   end
 
   create_table "translation_files", force: :cascade do |t|
-    t.integer "upload_id", null: false
+    t.bigint "upload_id", null: false
     t.string "file_name"
     t.string "file_type"
     t.datetime "created_at", precision: 6, null: false
