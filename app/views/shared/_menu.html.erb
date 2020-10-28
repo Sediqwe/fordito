@@ -14,14 +14,14 @@
     <div class="ui dropdown item">
       Menü<i class="dropdown icon"></i>
       <div class="menu">
-      <%= link_to "Regisztrálás", new_user_session_path, class: "item" %>
-      <%= link_to "Belépés", user_session_path, class: "item" %>
-      <%= link_to "Kilépés",  destroy_user_session_path, method: "delete", class: "item" %>
+      <%= link_to "Regisztrálás", users_path, class: "item" %>
+      <%= link_to "Belépés", users_path, class: "item"  %>
+      <%= link_to "Kilépés", users_path, class: "item"  %>
         
       </div>
     </div>
     <div class="item">
-    <div><%= link_to "Regisztrálás", new_user_session_path , class: "ui primary button" %></div>   
+    <div><%= link_to "Regisztrálás", class: "ui primary button" %></div>   
     
     </div>
   </div>
