@@ -5,9 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
     has_one_attached :avatar
-    validates :avatar, presence:true
     validates :email, uniqueness: true
-    validates :username, length: {minimum:4, maximum:20},uniqueness: true
+    
     
     
 end
